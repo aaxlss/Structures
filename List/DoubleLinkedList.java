@@ -54,6 +54,28 @@ public class DoubleLinkedList {
             }
            return null;
         }
+
+        public Boolean delete (int data){
+            Node findNode = find(data);
+
+            if(findNode != null){
+                if(findNode.prev != null){
+                    findNode.prev.next = findNode.next;
+                } else {
+                    head = findNode.next;
+                }
+                if(findNode.next != null){
+                    findNode.next.prev = findNode.prev;
+                } else {
+                    tail = findNode.prev;
+                }
+                
+                return true;
+            } else {
+                return false;
+            }
+        
+        }
     
         public void display(){
             Node current = head;
@@ -86,9 +108,12 @@ public class DoubleLinkedList {
         sLit.appendNode(3);
 
 
-//        sLit.display();
-        Node findNode = sLit.find(1);
-        System.out.println("Found item: " + findNode.next.data);
+       sLit.display();
+        // Node findNode = sLit.find(1);
+        if(sLit.delete(3)){
+            sLit.display();
+        }
+        // System.out.println("Found item: " + findNode.next.data);
         
 
     }
