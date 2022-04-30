@@ -41,6 +41,19 @@ public class DoubleLinkedList {
                 head = newNode;
             }
         }
+
+        public Node find (int data){
+            Node current = head;
+            
+            while (current !=null){
+                if(current.data != data){
+                    current = current.next;
+                } else {
+                   return current;
+                }
+            }
+           return null;
+        }
     
         public void display(){
             Node current = head;
@@ -73,7 +86,9 @@ public class DoubleLinkedList {
         sLit.appendNode(3);
 
 
-        sLit.display();
+//        sLit.display();
+        Node findNode = sLit.find(1);
+        System.out.println("Found item: " + findNode.next.data);
         
 
     }
